@@ -1,0 +1,26 @@
+;Broken function
+
+(define (biggest-divisor-helper n m divisor answer)
+  (cond
+    ((and (integer? (/ n divisor)) (integer? (/ m divisor))) (biggest-divisor-helper (/ n divisor) (/ m divisor) divisor (* divisor answer)))
+    ((or (equal? n divisor) (equal? m divisor)) answer)
+    (else (biggest-divisor-helper n m (+ 1 divisor) answer))))
+
+(define (biggest-divisor n m)
+  (cond
+    ((equal? n m) n)
+    (else (biggest-divisor-helper n m divisor answer))))
+    
+    
+  ;Working Function
+  
+  (define (biggest-divisor-helper n m divisor answer)
+  (cond
+    ((and (integer? (/ n divisor)) (integer? (/ m divisor))) (biggest-divisor-helper (/ n divisor) (/ m divisor) divisor (* divisor answer)))
+    ((or (<= n divisor) (<= m divisor)) answer)
+    (else (biggest-divisor-helper n m (+ 1 divisor) answer))))
+
+(define (biggest-divisor n m)
+  (cond
+    ((equal? n m) n)
+    (else (biggest-divisor-helper n m divisor answer))))
